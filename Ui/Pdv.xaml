@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="GestaoEmpresarialERP.Ui.Pdv"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GestaoEmpresarialERP.Ui"
+    xmlns:views="using:GestaoEmpresarialERP.Views"
+    xmlns:entity="using:GestaoEmpresarialERP.Entities"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Loaded="Page_Loaded">
+
+    <Grid Padding="10" ColumnSpacing="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Pesquisar serviço</TextBlock>
+        <TextBox Grid.Row="0" Grid.Column="1" TextChanged="TextBox_TextChanged" x:Name="TxPesquisa"></TextBox>
+        <ListView 
+            ScrollViewer.VerticalScrollBarVisibility="Visible"
+            ScrollViewer.VerticalScrollMode="Enabled"
+        Grid.Row="1" 
+        Grid.ColumnSpan="2"
+        x:Name="Resultados" 
+        IsItemClickEnabled="False"
+        Height="200"
+        Loaded="Resultados_Loaded">
+            <ListView.Header>
+                <Grid Padding="10,5,10,5" BorderBrush="Gray" BorderThickness="0,0,0,1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="0" Text="Id"/>
+                    <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="1" Text="Nome"/>
+                    <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="2" Text="Preço"/>
+                    <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Grid.Column="3" Text="Ações"/>
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="entity:Servico">
+                    <Grid ColumnSpacing="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" HorizontalAlignment="Center" Text="{x:Bind Id}"/>
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="{x:Bind Nome}"/>
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="{x:Bind x:String.Format(x:Null, 'R$ {0:F2}', Preco)}"/>
+                        <Grid Grid.Column="3" HorizontalAlignment="Center" ColumnSpacing="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Click="Selecionar_Click">Selecionar</Button>
+                            <Button Grid.Column="1" Click="BtnAlterar_Click">Alterar</Button>
+                            <Button Grid.Column="2" Click="BtnExcluir_Click">Excluir</Button>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!--Lista de itens selecionados-->
+        <ListView 
+            Grid.Row="2"
+            Grid.ColumnSpan="2"
+        x:Name="lstSelecionados"
+            ScrollViewer.VerticalScrollBarVisibility="Visible"
+            ScrollViewer.VerticalScrollMode="Enabled">
+            <ListView.Header>
+                <ListViewHeaderItem>
+                    <TextBlock Text="Itens selecionados"/>
+                </ListViewHeaderItem>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="views:ServicoView" x:DefaultBindMode="OneWay">
+                    <Grid ColumnSpacing="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{x:Bind Id}"/>
+                        <TextBlock Grid.Column="1" Text="{x:Bind Nome}"/>
+                        <TextBlock Grid.Column="2" Text="{x:Bind x:String.Format(x:Null, 'R$ {0:F2}', Preco)}"/>
+                        <TextBlock Grid.Column="3" Text="{x:Bind Quantidade}"/>
+                        <TextBlock Grid.Column="4" Text="{x:Bind x:String.Format(x:Null, 'R$ {0:F2}',Total )}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" ColumnSpacing="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Click="BtnLimpar_Click">Limpar</Button>
+            <Button Grid.Column="1" Click="BtnRelatorio_Click">Relatório</Button>
+            <Button Grid.Column="2" Click="FluxoCaixa_Click">Fluxo de Caixa</Button>
+            <Button Grid.Column="3" Click="BtnNovoServico_Click">Novo Serviço</Button>
+            <Button Grid.Column="4" Click="BtnVenda_Click">Fechar Venda</Button>
+        </Grid>
+    </Grid>
+</Page>
