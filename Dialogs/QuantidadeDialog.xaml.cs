@@ -19,7 +19,7 @@ namespace GestaoEmpresarialERP
     public sealed partial class QuantidadeDialog : ContentDialog
     {
         public QuantidadeResult quantidadeResult { get; private set; }
-        public int Quantidade { get; private set; } = 0;
+        public int Quantidade { get; private set; } = 1;
 
         public QuantidadeDialog()
         {

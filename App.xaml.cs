@@ -71,8 +71,8 @@ namespace GestaoEmpresarialERP
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
                 // Replace with your real PostgreSQL connection details
-                string connectionString = Environment.GetEnvironmentVariable("GESTAOEMPRESARIALERP_DB_CONNECTION", EnvironmentVariableTarget.Machine)!;
-                //string connectionString = Environment.GetEnvironmentVariable("GESTAOEMPRESARIALERP_DB_CONNECTION_DESENV", EnvironmentVariableTarget.Machine)!;
+                string connectionString = Environment.GetEnvironmentVariable("PONTO_COMERCIAL_DB_CONNECTION", EnvironmentVariableTarget.Machine)!;
+                //string connectionString = Environment.GetEnvironmentVariable("PONTO_COMERCIAL_DB_CONNECTION_DESENV", EnvironmentVariableTarget.Machine)!;
 
                 optionsBuilder.UseNpgsql(connectionString);
             }

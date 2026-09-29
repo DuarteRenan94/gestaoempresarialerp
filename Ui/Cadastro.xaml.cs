@@ -31,6 +31,26 @@ public sealed partial class Cadastro : Page
 
     private async void BtnCadastrar_Click(object sender, RoutedEventArgs e)
     {
+        if (NomeServico.Text.Equals("") && PrecoServico.Text.Equals(""))
+        {
+            await msg.Error("Nome e preço do serviço vazios");
+            return;
+        }
+        if (NomeServico.Text.Equals(""))
+        {
+            await msg.Error("Nome do serviço vazio");
+            return;
+        }
+        if (PrecoServico.Text.Equals(""))
+        {
+            await msg.Error("Preço do serviço vazio");
+            return;
+        }
+        if (Double.Parse(PrecoServico.Text) < 0)
+        {
+            await msg.Error("Preço do serviço negativo");
+            return;
+        }
         using (var context = new AppDbContext())
         {
             try
@@ -60,4 +80,5 @@ public sealed partial class Cadastro : Page
     {
         this.msg = new(this.XamlRoot);
     }
+
 }

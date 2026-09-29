@@ -84,8 +84,13 @@ namespace GestaoEmpresarialERP.Ui
             lstSelecionados.ItemsSource = ServicosSelecionados;
         }
 
-        private void BtnVenda_Click(object sender, RoutedEventArgs args)
+        private async void BtnVenda_Click(object sender, RoutedEventArgs args)
         {
+            if(ServicosSelecionados.Count == 0)
+            {
+                await this.Error("Não há itens no carrinho");
+                return;
+            }
             Frame frame = (Frame)Parent;
             AppState.Views = ServicosSelecionados!;
             frame.Navigate(typeof(VendaPage));

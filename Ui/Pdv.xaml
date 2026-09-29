@@ -65,9 +65,9 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Button Grid.Column="0" Click="Selecionar_Click">Selecionar</Button>
-                            <Button Grid.Column="1" Click="BtnAlterar_Click">Alterar</Button>
-                            <Button Grid.Column="2" Click="BtnExcluir_Click">Excluir</Button>
+                            <Button Grid.Column="0" Click="Selecionar_Click" ToolTipService.ToolTip="Adicionar ao carrinho" Background="Transparent" BorderThickness="0" FontFamily="{ThemeResource SymbolThemeFontFamily}" Content="&#xe7bf;" Foreground="Green"/>
+                            <Button Grid.Column="1" Click="BtnAlterar_Click" ToolTipService.ToolTip="Alterar nome e preço do serviço" Background="Transparent" BorderThickness="0" FontFamily="{ThemeResource SymbolThemeFontFamily}" Content="&#xe70f;"/>
+                            <Button Grid.Column="2" Click="BtnExcluir_Click" ToolTipService.ToolTip="Excluir serviço" Background="Transparent" BorderThickness="0" FontFamily="{ThemeResource SymbolThemeFontFamily}" Content="&#xe74d;" Foreground="Red"/>
                         </Grid>
                     </Grid>
                 </DataTemplate>
@@ -83,7 +83,10 @@
             ScrollViewer.VerticalScrollMode="Enabled">
             <ListView.Header>
                 <ListViewHeaderItem>
-                    <TextBlock Text="Itens selecionados"/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="3">
+                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xe7bf;"/>
+                        <TextBlock Text="Carrinho"/>
+                    </StackPanel>
                 </ListViewHeaderItem>
             </ListView.Header>
             <ListView.ItemTemplate>
@@ -114,11 +117,36 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Click="BtnLimpar_Click">Limpar</Button>
-            <Button Grid.Column="1" Click="BtnRelatorio_Click">Relatório</Button>
-            <Button Grid.Column="2" Click="FluxoCaixa_Click">Fluxo de Caixa</Button>
-            <Button Grid.Column="3" Click="BtnNovoServico_Click">Novo Serviço</Button>
-            <Button Grid.Column="4" Click="BtnVenda_Click">Fechar Venda</Button>
+            <Button Grid.Column="0" Click="BtnLimpar_Click">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="2">
+                    <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xe894;"/>
+                    <TextBlock Text="Limpar"/>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="1" Click="BtnRelatorio_Click">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="2">
+                    <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xe9f9;"/>
+                    <TextBlock Text="Relatório"/>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="2" Click="FluxoCaixa_Click">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="2">
+                    <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xec59;"/>
+                    <TextBlock Text="Fluxo de Caixa"/>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="3" Click="BtnNovoServico_Click">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="2">
+                    <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xe710;"/>
+                    <TextBlock Text="Novo Serviço"/>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="4" Click="BtnVenda_Click">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="2">
+                    <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xe74e;"/>
+                    <TextBlock Text="Finalizar Venda"/>
+                </StackPanel>
+            </Button>
         </Grid>
     </Grid>
 </Page>

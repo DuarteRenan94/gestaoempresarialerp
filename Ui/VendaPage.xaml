@@ -57,9 +57,19 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Click="Voltar_Click">Voltar</Button>
+            <Button Grid.Column="0" Click="Voltar_Click">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="2">
+                    <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xe72b;"/>
+                    <TextBlock Text="Voltar"/>
+                </StackPanel>
+            </Button>
             <ComboBox Grid.Column="1" VerticalAlignment="Center" Width="190" x:Name="CbFormas" PlaceholderText="Forma de Pagamento" SelectedValuePath="Id" SelectedValue="{x:Bind IdFormaSelecionada, Mode=TwoWay}"/>
-            <Button x:Name="BtnRegistrar" Grid.Column="2" Click="BtnRegistrar_Click">Registrar Venda</Button>
+            <Button x:Name="BtnRegistrar" Grid.Column="2" Click="BtnRegistrar_Click">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="2">
+                    <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xe74e;"/>
+                    <TextBlock Text="Registrar Venda"/>
+                </StackPanel>
+            </Button>
         </Grid>
     </Grid>
 </Page>
